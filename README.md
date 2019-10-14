@@ -5,9 +5,32 @@ This project contains a server that holds inlogg, username and booking meetings.
 
 ## How it looks like
 Consider this as just a template for a simple booking system. Here you can change the text, pictures
-and other things that fits your needs. 
+and other things that fits your needs. It's currently a mix between Swedish and English, but use Google Translate 
+if you don't understand. Swedish and English has the same gramar and logic. 
 
+Login:
 
+![a](https://github.com/DanielMartensson/BooK/blob/master/Pictures/Login.PNG?raw=true)
+
+Create new member:
+
+![a](https://github.com/DanielMartensson/BooK/blob/master/Pictures/CreateNewMember.PNG?raw=true)
+
+Success to create a new member:
+
+![a](https://github.com/DanielMartensson/BooK/blob/master/Pictures/SuccessNewMember.PNG)
+
+Create new meeting:
+
+![a](https://github.com/DanielMartensson/BooK/blob/master/Pictures/Meeting.PNG?raw=true)
+
+Menu:
+
+![a](https://github.com/DanielMartensson/BooK/blob/master/Pictures/Menu.PNG?raw=true)
+
+Trying to edit my self by using my own user. I'm have onlu authorized with the role USER in Spring Security.
+
+![a](https://github.com/DanielMartensson/BooK/blob/master/Pictures/TryingToEditMember.PNG?raw=true)
 
 ## Features
 
@@ -17,6 +40,8 @@ and other things that fits your needs.
 * Using GMail SMTP server to send message to the members
 * Spring Boot with Spring Security and JPA and Hibernate
 * Made in JavaFX = Avaiable for booth Android and Iphone
+* Admin have rights to change roles(ADMIN/USER), password and username for other users
+* Auto deleting old meetings that are over 1 week old
 ```
 
 ## How to use
