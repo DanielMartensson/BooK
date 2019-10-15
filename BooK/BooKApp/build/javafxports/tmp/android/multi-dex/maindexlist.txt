@@ -80,6 +80,7 @@ android/support/v4/app/NotificationCompat$NotificationCompatBaseImpl.class
 javafx/beans/property/BooleanProperty$2.class
 android/support/v4/app/NotificationCompatApi20.class
 android/support/v4/content/res/FontResourcesParserCompat.class
+cz/msebera/android/httpclient/annotation/Obsolete.class
 android/support/multidex/MultiDexExtractor$1.class
 android/support/v4/view/ViewPager$PageTransformer.class
 javafx/beans/WeakListener.class
@@ -206,6 +207,7 @@ com/gluonhq/impl/charm/a/d/a.class
 android/support/v4/view/ViewCompat$ResolvedLayoutDirectionMode.class
 android/arch/lifecycle/Lifecycle$Event.class
 lombok/Delegate.class
+cz/msebera/android/httpclient/annotation/Contract.class
 sun/reflect/CallerSensitive.class
 android/support/v4/provider/FontRequest.class
 com/gluonhq/charm/glisten/control/NavigationDrawer.class
@@ -235,7 +237,6 @@ android/support/v4/media/session/MediaSessionCompat$Token.class
 com/sun/javafx/binding/ExpressionHelper.class
 android/support/v4/util/ContainerHelpers.class
 android/support/annotation/NonNull.class
-org/apache/http/annotation/Contract.class
 javafx/beans/property/ReadOnlyBooleanProperty$2.class
 android/support/v4/widget/CircularProgressDrawable$ProgressDrawableSize.class
 android/support/v4/app/NotificationCompat$BigTextStyle.class
@@ -320,7 +321,6 @@ android/support/annotation/GuardedBy.class
 android/support/v4/view/ViewPager$3.class
 javax/inject/Singleton.class
 lombok/experimental/Tolerate.class
-org/apache/http/annotation/Experimental.class
 android/support/annotation/AnimatorRes.class
 lombok/NoArgsConstructor.class
 javafx/geometry/Dimension2D.class
@@ -341,7 +341,6 @@ com/google/gson/annotations/SerializedName.class
 android/support/v4/content/res/FontResourcesParserCompat$FamilyResourceEntry.class
 android/support/v4/media/MediaMetadataCompatApi21.class
 android/support/v4/content/res/FontResourcesParserCompat$FontFileResourceEntry.class
-org/apache/http/annotation/ThreadingBehavior.class
 android/support/annotation/IntegerRes.class
 android/support/v4/view/ViewPager$OnPageChangeListener.class
 java/util/function/Consumer.class
@@ -390,7 +389,6 @@ android/support/v4/view/ViewCompat$ViewCompatApi21Impl$1.class
 android/arch/lifecycle/Lifecycle.class
 android/support/v4/app/NotificationCompat$Action.class
 lombok/experimental/PackagePrivate.class
-org/apache/http/annotation/Obsolete.class
 lombok/Builder$Default.class
 lombok/extern/apachecommons/CommonsLog.class
 android/support/v4/view/ViewCompat$NestedScrollType.class
@@ -483,6 +481,7 @@ javafxports/android/Launcher.class
 android/support/v4/media/MediaBrowserCompat.class
 android/support/v4/app/NotificationCompat$InboxStyle.class
 android/support/v4/media/session/PlaybackStateCompat$CustomAction.class
+cz/msebera/android/httpclient/annotation/ThreadingBehavior.class
 android/support/v4/view/ViewPager$ViewPositionComparator.class
 android/support/annotation/WorkerThread.class
 android/support/multidex/ZipUtil.class
@@ -547,3 +546,4 @@ android/support/v4/media/MediaBrowserCompat$SearchResultReceiver.class
 android/support/v4/media/VolumeProviderCompat$Callback.class
 android/support/v4/media/MediaBrowserCompat$SubscriptionCallback.class
 android/support/v4/media/RatingCompat$Style.class
+cz/msebera/android/httpclient/annotation/Experimental.class

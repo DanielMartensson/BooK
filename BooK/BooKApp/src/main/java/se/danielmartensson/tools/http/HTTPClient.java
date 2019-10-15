@@ -2,29 +2,31 @@ package se.danielmartensson.tools.http;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
+
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import cz.msebera.android.httpclient.auth.AuthScope;
+import cz.msebera.android.httpclient.auth.UsernamePasswordCredentials;
+import cz.msebera.android.httpclient.client.CredentialsProvider;
+import cz.msebera.android.httpclient.client.methods.CloseableHttpResponse;
+import cz.msebera.android.httpclient.client.methods.HttpGet;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.entity.StringEntity;
+import cz.msebera.android.httpclient.impl.client.BasicCredentialsProvider;
+import cz.msebera.android.httpclient.impl.client.CloseableHttpClient;
+import cz.msebera.android.httpclient.impl.client.HttpClients;
+import cz.msebera.android.httpclient.util.EntityUtils;
 
 
 
 public class HTTPClient {
 	
 
-	public static final String ADDRESS = "spektrakon.se";
+	public static final String ADDRESS = "yourPageName.com"; // You need to set this address
 
-	public static final int PORT = 80;
+	public static final int PORT = 80; // Leave this port to 80 = Internet. Not 8080 = For localhost
 	
 	public static String USERNAME; // This is actully email in practice because you login with your email
 	
