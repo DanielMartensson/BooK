@@ -2,13 +2,13 @@ package se.danielmartensson.views;
 
 import javax.inject.Inject;
 
+import org.apache.hc.core5.http.HttpStatus;
 
 import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 
-import cz.msebera.android.httpclient.HttpStatus;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

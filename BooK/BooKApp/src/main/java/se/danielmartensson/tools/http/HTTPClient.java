@@ -3,28 +3,28 @@ package se.danielmartensson.tools.http;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import org.apache.hc.client5.http.auth.AuthScope;
+import org.apache.hc.client5.http.auth.CredentialsProvider;
+import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import cz.msebera.android.httpclient.auth.AuthScope;
-import cz.msebera.android.httpclient.auth.UsernamePasswordCredentials;
-import cz.msebera.android.httpclient.client.CredentialsProvider;
-import cz.msebera.android.httpclient.client.methods.CloseableHttpResponse;
-import cz.msebera.android.httpclient.client.methods.HttpGet;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.entity.StringEntity;
-import cz.msebera.android.httpclient.impl.client.BasicCredentialsProvider;
-import cz.msebera.android.httpclient.impl.client.CloseableHttpClient;
-import cz.msebera.android.httpclient.impl.client.HttpClients;
-import cz.msebera.android.httpclient.util.EntityUtils;
 
 
 
 public class HTTPClient {
 	
 
-	public static final String ADDRESS = "yourPageName.com"; // You need to set this address
+	public static final String ADDRESS = "yourCompany.com"; // You need to set this address
 
 	public static final int PORT = 80; // Leave this port to 80 = Internet. Not 8080 = For localhost
 	
@@ -41,9 +41,9 @@ public class HTTPClient {
 	 * @param password
 	 * @return 
 	 */
-	public HTTPMessage login(String username, String password) {
-		CredentialsProvider credsProvider = new BasicCredentialsProvider();
-		credsProvider.setCredentials(new AuthScope(ADDRESS, PORT), new UsernamePasswordCredentials(username, password));
+	public HTTPMessage login(String username, String password) {		
+	    BasicCredentialsProvider credsProvider = new BasicCredentialsProvider();
+		credsProvider.setCredentials(new AuthScope(ADDRESS, PORT), new UsernamePasswordCredentials(username, password.toCharArray()));
 		httpclient = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
 		HTTPClient.USERNAME = username; // Save
 		return sendPost("http://" + ADDRESS + ":" + PORT + "/user/login");
@@ -64,11 +64,11 @@ public class HTTPClient {
 			String json = EntityUtils.toString(response.getEntity());
 			Type type = new TypeToken<HTTPMessage>() {}.getType();
 			HTTPMessage hTTPMessage = new Gson().fromJson(json, type);
-			hTTPMessage.setConnectionStatus(response.getStatusLine().getStatusCode());
+			hTTPMessage.setConnectionStatus(response.getCode());
 
 			// Return the object
 			return hTTPMessage;
-		} catch (IOException | RuntimeException e) {
+		} catch (IOException | RuntimeException | ParseException e) {
 
 			return null;
 		}
@@ -90,11 +90,11 @@ public class HTTPClient {
 			String json = EntityUtils.toString(response.getEntity());
 			Type type = new TypeToken<HTTPMessage>() {}.getType();
 			HTTPMessage hTTPMessage = new Gson().fromJson(json, type);
-			hTTPMessage.setConnectionStatus(response.getStatusLine().getStatusCode());
+			hTTPMessage.setConnectionStatus(response.getCode());
 
 			// Return the object
 			return hTTPMessage;
-		} catch (IOException | RuntimeException e) {
+		} catch (IOException | RuntimeException | ParseException e) {
 
 			return null;
 		}
@@ -119,11 +119,11 @@ public class HTTPClient {
 			String json = EntityUtils.toString(response.getEntity());
 			Type type = new TypeToken<HTTPMessage>() {}.getType();
 			HTTPMessage hTTPMessage = new Gson().fromJson(json, type);
-			hTTPMessage.setConnectionStatus(response.getStatusLine().getStatusCode());
+			hTTPMessage.setConnectionStatus(response.getCode());
 			
 			// Return the object
 			return hTTPMessage;
-		} catch (IOException e) {
+		} catch (IOException | ParseException e) {
 			return null;
 		}
 	}

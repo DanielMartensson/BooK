@@ -7,6 +7,15 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
+
 import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
@@ -16,14 +25,6 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import cz.msebera.android.httpclient.HttpStatus;
-import cz.msebera.android.httpclient.ParseException;
-import cz.msebera.android.httpclient.client.methods.CloseableHttpResponse;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.entity.StringEntity;
-import cz.msebera.android.httpclient.impl.client.CloseableHttpClient;
-import cz.msebera.android.httpclient.impl.client.HttpClients;
-import cz.msebera.android.httpclient.util.EntityUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -51,25 +52,26 @@ public class NewUserPresenter {
 
     @FXML
     void createUser(ActionEvent event) {
-    	// This will send a HTTP request to the server, without auth
-    	CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPost httppost = new HttpPost("http://" + HTTPClient.ADDRESS + ":" + HTTPClient.PORT + "/unauth/createnewuser");
-        
-        // Create a role
-        Role role = new Role();
-        role.setRole("USER");
-        Set<Role> roles = new HashSet<Role>();
-        roles.add(role);
-        
-        // Create user object
-        User user = new User();
-        user.setUsername(mail.getText());
-        user.setEmail(mail.getText());
-        user.setPassword(password.getText());
-        user.setRoles(roles);
-        
-        // Post the object to server and get reponse
-        try {
+    	try {
+	    	// This will send a HTTP request to the server, without auth
+	    	CloseableHttpClient httpclient = HttpClients.createDefault();
+	        HttpPost httppost = new HttpPost("http://" + HTTPClient.ADDRESS + ":" + HTTPClient.PORT + "/unauth/createnewuser");
+	        
+	        // Create a role
+	        Role role = new Role();
+	        role.setRole("USER");
+	        Set<Role> roles = new HashSet<Role>();
+	        roles.add(role);
+	        
+	        // Create user object
+	        User user = new User();
+	        user.setUsername(mail.getText());
+	        user.setEmail(mail.getText());
+	        user.setPassword(password.getText());
+	        user.setRoles(roles);
+	        
+	        // Post the object to server and get reponse
+       
 			httppost.setEntity(new StringEntity(new Gson().toJson(user)));
 			httppost.setHeader("Content-type", "application/json");
 			CloseableHttpResponse response = httpclient.execute(httppost);
@@ -80,7 +82,7 @@ public class NewUserPresenter {
 			HTTPMessage hTTPMessage = new Gson().fromJson(json, type);
 			
 			// Check result
-			if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+			if(response.getCode() == HttpStatus.SC_OK) {
 				if(hTTPMessage.getMessageStatusCode() == HttpStatus.SC_OK) {
 					dialogs.alertDialog(AlertType.INFORMATION, "Success", hTTPMessage.getMessage());
 				}else {
@@ -90,7 +92,7 @@ public class NewUserPresenter {
 				dialogs.alertDialog(AlertType.ERROR, "Fail", "No connection to server");
 			}
 			
-		} catch (ParseException | IOException e) {
+		} catch (Exception e) {
 			dialogs.exception("Cannot create new user", e);
 		}
 		
