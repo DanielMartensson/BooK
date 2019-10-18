@@ -3,7 +3,6 @@ com/gluonhq/charm/glisten/application/MobileApplication$$Lambda$2.class
 android/support/v4/app/FrameMetricsAggregator$MetricType.class
 com/sun/javafx/binding/StringFormatter.class
 android/support/annotation/VisibleForTesting.class
-org/apache/hc/core5/annotation/Experimental.class
 android/support/v4/media/session/MediaSessionCompatApi21.class
 android/support/v4/view/ViewCompat$ViewCompatApi26Impl.class
 android/support/v4/view/ViewCompat$ScrollAxis.class
@@ -48,7 +47,6 @@ android/support/v4/media/MediaBrowserCompat$ServiceBinderWrapper.class
 android/support/v4/app/NotificationCompat$BadgeIconType.class
 lombok/Builder.class
 android/support/v4/media/MediaBrowserCompat$CustomActionResultReceiver.class
-org/apache/hc/core5/annotation/Contract.class
 javafx/beans/property/SimpleObjectProperty.class
 com/sun/javafx/binding/Logging.class
 javafx/beans/binding/StringExpression.class
@@ -82,6 +80,7 @@ android/support/v4/app/NotificationCompat$NotificationCompatBaseImpl.class
 javafx/beans/property/BooleanProperty$2.class
 android/support/v4/app/NotificationCompatApi20.class
 android/support/v4/content/res/FontResourcesParserCompat.class
+cz/msebera/android/httpclient/annotation/Obsolete.class
 android/support/multidex/MultiDexExtractor$1.class
 android/support/v4/view/ViewPager$PageTransformer.class
 javafx/beans/WeakListener.class
@@ -112,7 +111,6 @@ java/lang/FunctionalInterface.class
 android/support/v4/media/session/PlaybackStateCompat$Builder.class
 android/support/v4/media/RatingCompat$StarStyle.class
 javax/inject/Qualifier.class
-org/apache/hc/core5/annotation/Obsolete.class
 javafx/util/Duration.class
 android/support/v4/media/AudioAttributesCompat$AttributeUsage.class
 android/support/annotation/Nullable.class
@@ -206,10 +204,10 @@ com/gluonhq/charm/glisten/application/MobileApplication$1.class
 android/support/v4/app/NotificationBuilderWithBuilderAccessor.class
 android/support/v4/media/AudioAttributesCompat$Builder.class
 com/gluonhq/impl/charm/a/d/a.class
-org/apache/hc/core5/annotation/ThreadingBehavior.class
 android/support/v4/view/ViewCompat$ResolvedLayoutDirectionMode.class
 android/arch/lifecycle/Lifecycle$Event.class
 lombok/Delegate.class
+cz/msebera/android/httpclient/annotation/Contract.class
 sun/reflect/CallerSensitive.class
 android/support/v4/provider/FontRequest.class
 com/gluonhq/charm/glisten/control/NavigationDrawer.class
@@ -465,7 +463,6 @@ lombok/EqualsAndHashCode$Exclude.class
 android/support/annotation/Size.class
 android/support/v4/media/AudioAttributesCompat.class
 android/support/v4/app/NotificationCompat$CarExtender.class
-org/apache/hc/client5/http/auth/AuthStateCacheable.class
 android/support/v4/view/ViewPager$2.class
 com/google/gson/annotations/Since.class
 android/support/v4/media/RatingCompat.class
@@ -484,6 +481,7 @@ javafxports/android/Launcher.class
 android/support/v4/media/MediaBrowserCompat.class
 android/support/v4/app/NotificationCompat$InboxStyle.class
 android/support/v4/media/session/PlaybackStateCompat$CustomAction.class
+cz/msebera/android/httpclient/annotation/ThreadingBehavior.class
 android/support/v4/view/ViewPager$ViewPositionComparator.class
 android/support/annotation/WorkerThread.class
 android/support/multidex/ZipUtil.class
@@ -503,7 +501,6 @@ javafx/beans/property/ReadOnlyObjectWrapper$1.class
 android/support/v4/content/res/FontResourcesParserCompat$ProviderResourceEntry.class
 lombok/Setter.class
 android/support/v4/view/ViewCompat$AccessibilityLiveRegion.class
-org/apache/hc/core5/annotation/Internal.class
 javafx/beans/binding/BooleanBinding.class
 android/support/v4/media/session/MediaSessionCompat$MediaSessionImpl.class
 android/support/v4/net/ConnectivityManagerCompat$ConnectivityManagerCompatBaseImpl.class
@@ -549,3 +546,4 @@ android/support/v4/media/MediaBrowserCompat$SearchResultReceiver.class
 android/support/v4/media/VolumeProviderCompat$Callback.class
 android/support/v4/media/MediaBrowserCompat$SubscriptionCallback.class
 android/support/v4/media/RatingCompat$Style.class
+cz/msebera/android/httpclient/annotation/Experimental.class

@@ -57,7 +57,7 @@ Step 1: Install the following software
 After the installations of the MySQL server, you ned to create a MySQL user for the file application.properties.
 The user need to have granted rights for creating a database and tables.
 
-Step 2: Configure this properties file and the Java file
+Step 2: Configure this properties file and the Java file. Set the desired port that you like.
 
 ```
 application.properties

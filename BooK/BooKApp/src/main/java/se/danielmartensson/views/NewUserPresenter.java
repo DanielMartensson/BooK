@@ -1,20 +1,10 @@
 package se.danielmartensson.views;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.inject.Inject;
-
-import org.apache.hc.client5.http.classic.methods.HttpPost;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.HttpStatus;
-import org.apache.hc.core5.http.ParseException;
-import org.apache.hc.core5.http.io.entity.EntityUtils;
-import org.apache.hc.core5.http.io.entity.StringEntity;
 
 import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
@@ -25,6 +15,13 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import cz.msebera.android.httpclient.HttpStatus;
+import cz.msebera.android.httpclient.client.methods.CloseableHttpResponse;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.entity.StringEntity;
+import cz.msebera.android.httpclient.impl.client.CloseableHttpClient;
+import cz.msebera.android.httpclient.impl.client.HttpClients;
+import cz.msebera.android.httpclient.util.EntityUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -82,7 +79,7 @@ public class NewUserPresenter {
 			HTTPMessage hTTPMessage = new Gson().fromJson(json, type);
 			
 			// Check result
-			if(response.getCode() == HttpStatus.SC_OK) {
+			if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				if(hTTPMessage.getMessageStatusCode() == HttpStatus.SC_OK) {
 					dialogs.alertDialog(AlertType.INFORMATION, "Success", hTTPMessage.getMessage());
 				}else {
