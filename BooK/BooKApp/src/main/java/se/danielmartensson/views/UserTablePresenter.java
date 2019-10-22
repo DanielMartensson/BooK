@@ -20,10 +20,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.Node;
 import javafx.scene.control.Alert.AlertType;
-import se.danielmartensson.Main;
+import se.danielmartensson.book.Main;
 import se.danielmartensson.tools.http.HTTPClient;
 import se.danielmartensson.tools.http.HTTPMessage;
 import se.danielmartensson.tools.popup.Dialogs;
@@ -104,9 +107,46 @@ public class UserTablePresenter {
 		emailColumn.setCellValueFactory(new PropertyValueFactory<UserTable, String>("email"));
 		tablewViewListener = FXCollections.observableArrayList();
 		users.setItems(tablewViewListener);
+		
+		// Add functionalty to multiple selection
 		users.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); // We can select multiple rows
 		
+		// This code will handle multiple selection events. Press on a selected -> unselect
+		users.addEventFilter(MouseEvent.MOUSE_PRESSED, evt -> {
+		    Node node = evt.getPickResult().getIntersectedNode();
+
+		    // go up from the target node until a row is found or it's clear the
+		    // target node wasn't a node.
+		    while (node != null && node != users && !(node instanceof TableRow)) {
+		        node = node.getParent();
+		    }
+
+		    // if is part of a row or the row,
+		    // handle event instead of using standard handling
+		    if (node instanceof TableRow) {
+		        // prevent further handling
+		        evt.consume();
+
+		        @SuppressWarnings("unchecked")
+				TableRow<UserTable> row = (TableRow<UserTable>) node;
+		        TableView<UserTable> tv = row.getTableView();
+
+		        // focus the tableview
+		        tv.requestFocus();
+
+		        if (!row.isEmpty()) {
+		            // handle selection for non-empty nodes
+		            int index = row.getIndex();
+		            if (row.isSelected()) {
+		                tv.getSelectionModel().clearSelection(index);
+		            } else {
+		                tv.getSelectionModel().select(index);
+		            }
+		        }
+		    }
+		});
 	}
+	
 
 	/**
 	 * This function loops thru selectedCompanyUsers and select member if it's exist

@@ -17,7 +17,7 @@ repositories {
     }
 }
 
-mainClassName = 'se.danielmartensson.Main'
+mainClassName = 'se.danielmartensson.book.Main'
 
 dependencies {
     compile 'com.gluonhq:charm:5.0.2'
@@ -36,7 +36,7 @@ jfxmobile {
     }
     android {
         manifest = 'src/android/AndroidManifest.xml'
-        targetSdkVersion = '19'
+        targetSdkVersion = '23'
        
 
         dexOptions {

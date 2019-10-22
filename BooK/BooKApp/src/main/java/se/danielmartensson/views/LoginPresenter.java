@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import se.danielmartensson.Main;
+import se.danielmartensson.book.Main;
 import se.danielmartensson.tools.http.HTTPClient;
 import se.danielmartensson.tools.http.HTTPMessage;
 import se.danielmartensson.tools.popup.Dialogs;

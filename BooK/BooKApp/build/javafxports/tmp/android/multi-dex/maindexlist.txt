@@ -23,7 +23,6 @@ javafx/event/ActionEvent.class
 android/support/annotation/RawRes.class
 lombok/Setter$AnyAnnotation.class
 android/support/v4/widget/CircularProgressDrawable$1.class
-se/danielmartensson/Main$$Lambda$1.class
 javafx/beans/property/ReadOnlyBooleanProperty.class
 javafx/beans/binding/ObjectBinding.class
 android/support/multidex/MultiDexExtractor.class
@@ -47,6 +46,7 @@ android/support/v4/media/MediaBrowserCompat$ServiceBinderWrapper.class
 android/support/v4/app/NotificationCompat$BadgeIconType.class
 lombok/Builder.class
 android/support/v4/media/MediaBrowserCompat$CustomActionResultReceiver.class
+se/danielmartensson/book/Main$$Lambda$5.class
 javafx/beans/property/SimpleObjectProperty.class
 com/sun/javafx/binding/Logging.class
 javafx/beans/binding/StringExpression.class
@@ -60,7 +60,6 @@ javafx/beans/property/ObjectProperty.class
 android/support/v4/media/MediaMetadataCompat$Builder.class
 android/support/multidex/MultiDex.class
 android/support/v4/media/session/MediaSessionCompat$1.class
-se/danielmartensson/Main$$Lambda$6.class
 lombok/RequiredArgsConstructor.class
 android/support/v4/app/FrameMetricsAggregator$FrameMetricsApi24Impl.class
 android/support/v4/util/ArrayMap.class
@@ -131,9 +130,9 @@ android/support/v4/app/NotificationCompatBase$Action.class
 se/danielmartensson/views/MembersTableView.class
 android/support/v4/content/res/FontResourcesParserCompat$FetchStrategy.class
 android/support/v4/view/animation/FastOutSlowInInterpolator.class
-se/danielmartensson/Main$$Lambda$3.class
 android/support/v4/text/util/LinkifyCompat.class
 android/support/v4/media/MediaMetadataCompat$TextKey.class
+se/danielmartensson/book/Main$$Lambda$8.class
 lombok/SneakyThrows.class
 android/support/v4/media/VolumeProviderCompatApi21$Delegate.class
 android/support/v4/text/util/LinkifyCompat$1.class
@@ -226,7 +225,6 @@ com/gluonhq/charm/glisten/application/MobileApplication$$Lambda$9.class
 com/gluonhq/charm/glisten/control/Message.class
 android/support/annotation/ColorRes.class
 javafx/fxml/FXML.class
-se/danielmartensson/DrawerManager.class
 android/support/v4/media/MediaBrowserCompat$MediaItem$Flags.class
 android/support/v4/view/ViewCompat$LayerType.class
 android/support/v4/media/MediaBrowserCompatApi21.class
@@ -297,17 +295,18 @@ javafx/application/Preloader.class
 android/support/v4/media/session/PlaybackStateCompat$1.class
 android/support/v4/app/NotificationCompat$NotificationCompatApi20Impl.class
 android/support/v4/media/MediaBrowserCompat$MediaItem$1.class
+se/danielmartensson/book/Main$$Lambda$4.class
 com/sun/javafx/application/HostServicesDelegate.class
 javafx/stage/Window.class
 android/support/v4/app/NotificationCompatApi24$Builder.class
 com/gluonhq/charm/glisten/control/LifecycleEvent.class
-se/danielmartensson/Main$$Lambda$7.class
 lombok/experimental/SuperBuilder.class
 android/support/v4/app/NotificationCompatBase.class
 android/support/annotation/CheckResult.class
 android/support/v4/view/ViewCompat$ViewCompatApi18Impl.class
 android/support/v4/media/VolumeProviderCompat.class
 android/support/annotation/AnimRes.class
+se/danielmartensson/book/Main.class
 javafx/beans/property/BooleanProperty$1.class
 android/support/v4/view/ViewPropertyAnimatorCompat.class
 android/support/v4/view/ViewCompat$FocusRealDirection.class
@@ -369,13 +368,11 @@ android/support/v4/app/NotificationCompatJellybean.class
 com/gluonhq/charm/glisten/application/MobileApplication$$Lambda$3.class
 com/gluonhq/impl/charm/a/e/b.class
 com/gluonhq/charm/glisten/application/MobileApplication$$Lambda$11.class
-se/danielmartensson/Main$$Lambda$5.class
 com/gluonhq/charm/glisten/visual/Swatch.class
 javafx/beans/binding/BooleanExpression$2.class
 javax/inject/Named.class
 com/gluonhq/charm/glisten/application/MobileApplication$$Lambda$6.class
 android/support/v4/widget/CircularProgressDrawable$2.class
-se/danielmartensson/Main$$Lambda$2.class
 android/support/v4/media/VolumeProviderCompatApi21.class
 android/support/v4/media/session/MediaButtonReceiver.class
 lombok/NoArgsConstructor$AnyAnnotation.class
@@ -423,11 +420,10 @@ android/support/v4/view/ViewPager$LayoutParams.class
 javafx/beans/binding/BooleanExpression$3.class
 javafx/beans/binding/BooleanExpression.class
 lombok/experimental/Delegate.class
-se/danielmartensson/Main$$Lambda$4.class
 javafx/beans/value/ObservableStringValue.class
+se/danielmartensson/book/Main$$Lambda$1.class
 android/support/annotation/LayoutRes.class
 lombok/RequiredArgsConstructor$AnyAnnotation.class
-se/danielmartensson/Main.class
 lombok/extern/java/Log.class
 android/support/annotation/StyleRes.class
 javafx/animation/PauseTransition.class
@@ -440,6 +436,7 @@ lombok/val.class
 lombok/var.class
 android/support/annotation/ColorLong.class
 lombok/experimental/Wither$AnyAnnotation.class
+se/danielmartensson/book/Main$$Lambda$7.class
 android/support/v4/app/NotificationCompat$NotificationCompatApi19Impl.class
 android/support/annotation/RequiresApi.class
 android/support/v4/media/session/PlaybackStateCompat$RepeatMode.class
@@ -460,6 +457,7 @@ lombok/NonNull.class
 android/support/v4/view/ViewCompat$ImportantForAccessibility.class
 com/sun/javafx/beans/IDProperty.class
 lombok/EqualsAndHashCode$Exclude.class
+se/danielmartensson/book/Main$$Lambda$6.class
 android/support/annotation/Size.class
 android/support/v4/media/AudioAttributesCompat.class
 android/support/v4/app/NotificationCompat$CarExtender.class
@@ -480,6 +478,7 @@ javafx/application/Preloader$PreloaderNotification.class
 javafxports/android/Launcher.class
 android/support/v4/media/MediaBrowserCompat.class
 android/support/v4/app/NotificationCompat$InboxStyle.class
+se/danielmartensson/book/DrawerManager.class
 android/support/v4/media/session/PlaybackStateCompat$CustomAction.class
 cz/msebera/android/httpclient/annotation/ThreadingBehavior.class
 android/support/v4/view/ViewPager$ViewPositionComparator.class
@@ -499,6 +498,7 @@ android/support/v4/content/ContextCompat.class
 android/support/multidex/MultiDex$V14.class
 javafx/beans/property/ReadOnlyObjectWrapper$1.class
 android/support/v4/content/res/FontResourcesParserCompat$ProviderResourceEntry.class
+se/danielmartensson/book/Main$$Lambda$3.class
 lombok/Setter.class
 android/support/v4/view/ViewCompat$AccessibilityLiveRegion.class
 javafx/beans/binding/BooleanBinding.class
@@ -513,7 +513,6 @@ javafx/css/Styleable.class
 javafx/application/HostServices.class
 javafx/beans/value/WritableBooleanValue.class
 javax/annotation/PostConstruct.class
-se/danielmartensson/Main$$Lambda$8.class
 javafx/beans/property/ReadOnlyObjectWrapper.class
 android/arch/lifecycle/OnLifecycleEvent.class
 android/support/annotation/RestrictTo$Scope.class
@@ -543,6 +542,7 @@ android/support/v4/util/PatternsCompat.class
 android/support/v4/view/ViewPager.class
 android/support/v4/app/RemoteInputCompatBase.class
 android/support/v4/media/MediaBrowserCompat$SearchResultReceiver.class
+se/danielmartensson/book/Main$$Lambda$2.class
 android/support/v4/media/VolumeProviderCompat$Callback.class
 android/support/v4/media/MediaBrowserCompat$SubscriptionCallback.class
 android/support/v4/media/RatingCompat$Style.class

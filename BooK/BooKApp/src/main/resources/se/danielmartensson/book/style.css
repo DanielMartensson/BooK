@@ -1,0 +1,51 @@
+.spek-background {
+	-fx-background-color:  #BA2510;
+}
+
+.spek-font-family1 {
+	-fx-font-family: Open Sans;
+	-fx-font-style: italic;
+}
+
+.spek-button {
+	-fx-background-color: #BA2510;
+	-fx-background-radius: 20px;
+}
+
+.spek-button:hover {
+	-fx-background-color: #000000;
+}
+
+.spek-text-field {
+	
+}
+
+.spek-text-field:hover {
+	-fx-border-color: #000000;
+}
+
+.spek-text-field:focused {
+	-fx-border-color: #BA2510;
+}
+
+.check-box:selected > .box {
+    /* background color for selected checkbox */
+    -fx-background-color: #FFFFFF;
+}
+
+.check-box > .box {
+    /* background color of unselected checkbox */
+    -fx-background-color: #FFFFFF;
+}
+
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+    /* modify mark color */
+    -fx-background-color: #BA2510;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #7CFC00;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}

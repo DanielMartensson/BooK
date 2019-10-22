@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import cz.msebera.android.httpclient.ParseException;
 import cz.msebera.android.httpclient.auth.AuthScope;
 import cz.msebera.android.httpclient.auth.UsernamePasswordCredentials;
+import cz.msebera.android.httpclient.client.config.RequestConfig;
 import cz.msebera.android.httpclient.client.methods.CloseableHttpResponse;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
@@ -39,9 +40,16 @@ public class HTTPClient {
 	 * @return 
 	 */
 	public HTTPMessage login(String username, String password) {		
+		// Set the timeout
+		int timeout = 10; // seconds
+		RequestConfig config = RequestConfig.custom()
+		  .setConnectTimeout(timeout * 1000)
+		  .setConnectionRequestTimeout(timeout * 1000)
+		  .setSocketTimeout(timeout * 1000).build();
+		
 	    BasicCredentialsProvider credsProvider = new BasicCredentialsProvider();
 		credsProvider.setCredentials(new AuthScope(ADDRESS, PORT), new UsernamePasswordCredentials(username, password));
-		httpclient = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
+		httpclient = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).setDefaultRequestConfig(config).build();
 		HTTPClient.USERNAME = username; // Save
 		return sendPost("http://" + ADDRESS + ":" + PORT + "/user/login");
 	}

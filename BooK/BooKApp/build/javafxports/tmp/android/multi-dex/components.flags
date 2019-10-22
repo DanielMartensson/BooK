@@ -34,6 +34,6 @@
     <methods>;
 }
 
--keep class se.danielmartensson.Main {
+-keep class se.danielmartensson.book.Main {
     <init>();
 }

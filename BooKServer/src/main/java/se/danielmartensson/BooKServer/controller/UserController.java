@@ -4,6 +4,7 @@ package se.danielmartensson.BooKServer.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.internet.AddressException;
@@ -64,17 +65,19 @@ public class UserController {
 	public HTTPMessage removeConferenceRoomBooking(@RequestBody ConferenceRoom conferenceRoom) {
 		
 		// Get the conference room meeting and delete it
-		ConferenceRoom selectedConference = conferenceRoomRepository.findByStartAndEndAndEmail(conferenceRoom.getStart(), conferenceRoom.getEnd(), conferenceRoom.getEmail());
+		List<ConferenceRoom> selectedConferences = conferenceRoomRepository.findByStartAndEndAndEmail(conferenceRoom.getStart(), conferenceRoom.getEnd(), conferenceRoom.getEmail());
 		HTTPMessage hTTPMessage = new HTTPMessage();
-		if (selectedConference != null) {
-			
-			// Set in the members from database
-			conferenceRoom.setMembers(selectedConference.getMembers());
-			
-			// Delete now
-			conferenceRoomRepository.delete(selectedConference);
-			hTTPMessage.setMessageStatusCode(HttpStatus.OK.value());
-			hTTPMessage.setMessage("Meeting deleted");
+		if (selectedConferences != null) {
+			// If we got more than two meetings that have the SAME start, end and email
+			for(ConferenceRoom selectedConference : selectedConferences) {
+				// Set in the members from database
+				conferenceRoom.setMembers(selectedConference.getMembers());
+				
+				// Delete now
+				conferenceRoomRepository.delete(selectedConference);
+				hTTPMessage.setMessageStatusCode(HttpStatus.OK.value());
+				hTTPMessage.setMessage("Meeting deleted");
+			}
 			
 			// Send EMAIL to members
 			try {
@@ -94,11 +97,14 @@ public class UserController {
 	
 	@PostMapping("/getselectedmembers")
 	public HTTPMessage getSelectedMembers(@RequestBody ConferenceRoom conferenceRoom) {
-		ConferenceRoom selectedConference = conferenceRoomRepository.findByStartAndEndAndEmail(conferenceRoom.getStart(), conferenceRoom.getEnd(), conferenceRoom.getEmail());
+		List<ConferenceRoom> selectedConferences = conferenceRoomRepository.findByStartAndEndAndEmail(conferenceRoom.getStart(), conferenceRoom.getEnd(), conferenceRoom.getEmail());
 		HTTPMessage hTTPMessage = new HTTPMessage();
-		if (selectedConference != null) {
-			hTTPMessage.setMessageStatusCode(HttpStatus.OK.value());
-			hTTPMessage.setMessage(selectedConference.getMembers()); // They are seperated with ";"
+		if (selectedConferences != null) {
+			// If we got more than two meetings that have the SAME start, end and email
+			for(ConferenceRoom selectedConference : selectedConferences) {
+				hTTPMessage.setMessageStatusCode(HttpStatus.OK.value());
+				hTTPMessage.setMessage(selectedConference.getMembers()); // They are seperated with ";"
+			}
 		} else {
 			hTTPMessage.setMessageStatusCode(HttpStatus.NOT_FOUND.value()); // No data
 			hTTPMessage.setMessage("Members not exist");

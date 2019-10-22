@@ -12,5 +12,5 @@ import se.danielmartensson.BooKServer.entity.ConferenceRoom;
 public interface ConferenceRoomRepository extends JpaRepository<ConferenceRoom, Long>{
 	
 	List<ConferenceRoom> findByEmail(String email);
-	ConferenceRoom findByStartAndEndAndEmail(long start, long end, String email);
+	List<ConferenceRoom> findByStartAndEndAndEmail(long start, long end, String email);
 }

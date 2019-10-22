@@ -10,4 +10,4 @@
 -keep public class * extends java.lang.annotation.Annotation {
     *;
 }
--keep class se.danielmartensson.Main { <init>(); }
+-keep class se.danielmartensson.book.Main { <init>(); }
