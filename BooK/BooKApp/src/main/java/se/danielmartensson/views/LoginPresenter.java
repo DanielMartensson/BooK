@@ -94,6 +94,10 @@ public class LoginPresenter {
 			try {
 				File file = fileHandler.loadNewFile(LOGIN_PARAMETERS);
 				LastLogin lastLogin_SER = new Gson().fromJson(new JsonReader(new FileReader(file)), LastLogin.class);
+				
+				HTTPClient.ADDRESS = lastLogin_SER.getServerAddress();
+		    	HTTPClient.PORT = Integer.parseInt(lastLogin_SER.getPort());
+				
 				lastLogin.setEmail(lastLogin_SER.getEmail());
 				lastLogin.setPort(lastLogin_SER.getPort());
 				lastLogin.setServerAddress(lastLogin_SER.getServerAddress());
