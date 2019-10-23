@@ -35,7 +35,6 @@ import se.danielmartensson.tools.http.HTTPMessage;
 import se.danielmartensson.tools.popup.Dialogs;
 import se.danielmartensson.views.entity.Role;
 import se.danielmartensson.views.entity.User;
-import se.danielmartensson.views.savings.LastLogin;
 
 public class NewUserPresenter {
 	
