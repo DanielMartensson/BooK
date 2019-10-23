@@ -31,7 +31,7 @@ import se.danielmartensson.views.savings.LastLogin;
 
 public class LoginPresenter {
 
-	private static final String LOGIN_PARAMETERS = "/BooKStorage/loginparameters.json";
+	public static final String LOGIN_PARAMETERS = "/BooKStorage/loginparameters.json";
 	private static final String TEST_FILE_PATH  = "/BooKStorage/test.json";
 
 	@FXML
@@ -54,6 +54,9 @@ public class LoginPresenter {
     
     @Inject
     private FileHandler fileHandler;
+    
+    @Inject
+    private LastLogin lastLogin;
 
     /**
      * When we press the URL link "New user"
@@ -90,7 +93,10 @@ public class LoginPresenter {
 		if(fileHandler.exist(LOGIN_PARAMETERS) == true) {
 			try {
 				File file = fileHandler.loadNewFile(LOGIN_PARAMETERS);
-				LastLogin lastLogin = new Gson().fromJson(new JsonReader(new FileReader(file)), LastLogin.class);
+				LastLogin lastLogin_SER = new Gson().fromJson(new JsonReader(new FileReader(file)), LastLogin.class);
+				lastLogin.setEmail(lastLogin_SER.getEmail());
+				lastLogin.setPort(lastLogin_SER.getPort());
+				lastLogin.setServerAddress(lastLogin_SER.getServerAddress());
 				email.setText(lastLogin.getEmail());
 				
 			} catch (Exception e) {
@@ -110,8 +116,9 @@ public class LoginPresenter {
 		if(fileHandler.exist(LOGIN_PARAMETERS) == true) {
 			try {
 				File file = fileHandler.loadNewFile(LOGIN_PARAMETERS);
-				LastLogin lastLogin = new LastLogin();
 				lastLogin.setEmail(email.getText());
+				lastLogin.setServerAddress(HTTPClient.ADDRESS);
+				lastLogin.setPort(String.valueOf(HTTPClient.PORT));
 				String json = new Gson().toJson(lastLogin);
 				BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 				bufferedWriter.write(json);

@@ -50,7 +50,7 @@
          <children>
             <VBox>
                <children>
-                  <TextField fx:id="email">
+                  <TextField fx:id="email" stylesheets="@../book/style.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

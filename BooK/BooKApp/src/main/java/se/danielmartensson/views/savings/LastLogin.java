@@ -7,4 +7,6 @@ import lombok.Setter;
 @Setter
 public class LastLogin {
 	private String email;
+	private String serverAddress;
+	private String port;
 }

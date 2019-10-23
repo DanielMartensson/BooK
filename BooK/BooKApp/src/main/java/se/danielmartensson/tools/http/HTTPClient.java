@@ -22,9 +22,9 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 public class HTTPClient {
 	
 
-	public static final String ADDRESS = "192.168.1.219"; // You need to set this address
+	public static String ADDRESS = "localhost"; // Default
 
-	public static final int PORT = 8090; // Leave this port to 8090 = Internet. Not 8080 = For localhost
+	public static int PORT = 8080; // Default
 	
 	public static String USERNAME; // This is actully email in practice because you login with your email
 	

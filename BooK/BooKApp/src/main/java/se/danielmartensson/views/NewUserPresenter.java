@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
+import com.gluonhq.charm.glisten.control.DropdownButton;
 import com.gluonhq.charm.glisten.control.TextField;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
@@ -25,15 +26,20 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.MenuItem;
 import se.danielmartensson.book.Main;
 import se.danielmartensson.tools.http.HTTPClient;
 import se.danielmartensson.tools.http.HTTPMessage;
 import se.danielmartensson.tools.popup.Dialogs;
 import se.danielmartensson.views.entity.Role;
 import se.danielmartensson.views.entity.User;
+import se.danielmartensson.views.savings.LastLogin;
 
 public class NewUserPresenter {
+	
+	private static final String[] ports = {"80", "8080", "8085", "8090"};
 
 	@FXML
     private View view;
@@ -43,6 +49,15 @@ public class NewUserPresenter {
 
     @FXML
     private PasswordField password;
+    
+    @FXML
+    private TextField serverAddress;
+
+    @FXML
+    private DropdownButton port;
+    
+    @FXML
+    private VBox configurationBox;
     
     @Inject
     private Dialogs dialogs;
@@ -107,11 +122,43 @@ public class NewUserPresenter {
                 // When we slide in
             	AppBar appBar = MobileApplication.getInstance().getAppBar();
 				appBar.setNavIcon(MaterialDesignIcon.ARROW_BACK.button(e -> MobileApplication.getInstance().switchView(Main.LOGIN_VIEW)));
+				appBar.getActionItems().add(MaterialDesignIcon.BUILD.button(e -> enableConfiguration()));
 				appBar.setTitleText("Ny medlem");
 				appBar.setOpacity(1); // Show AppBar - Because we enter this page as first page
             }else {
             	// When we leave the page
             }
         });
+    	
+    	// Add ports
+    	for(int i = 0; i < ports.length; i++)
+    		port.getItems().add(new MenuItem(ports[i]));
+    	
+    		
+    }
+    
+    /**
+     * This enable the Vbox and the opacity will be 1, press again and the Vbox will disapear
+     */
+    private void enableConfiguration() {
+		if(configurationBox.isDisable() == true) {
+			configurationBox.setDisable(false);
+			configurationBox.setOpacity(1.0);
+		}else {
+			configurationBox.setDisable(true);
+			configurationBox.setOpacity(0.0);
+		}
+	}
+
+	/**
+     * This will save the configuration for server address and port
+     * @param event
+     */
+    @FXML
+    void saveConfiguration(ActionEvent event) {
+    	HTTPClient.ADDRESS = serverAddress.getText();
+    	HTTPClient.PORT = Integer.parseInt(port.getSelectedItem().getText());
+    	
+    	dialogs.alertDialog(AlertType.INFORMATION, "Configurations set", "Will be saved to json file when login");
     }
 }

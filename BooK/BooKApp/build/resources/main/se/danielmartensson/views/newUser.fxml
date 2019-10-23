@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import com.gluonhq.charm.glisten.control.DropdownButton?>
 <?import com.gluonhq.charm.glisten.control.TextField?>
 <?import com.gluonhq.charm.glisten.mvc.View?>
 <?import javafx.geometry.Insets?>
@@ -48,7 +49,7 @@
          <children>
             <VBox>
                <children>
-                  <TextField fx:id="mail">
+                  <TextField fx:id="mail" stylesheets="@../book/style.css">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -58,7 +59,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Text>
-                  <PasswordField fx:id="password" styleClass="spek-text-field">
+                  <PasswordField fx:id="password" stylesheets="@../book/style.css">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -80,6 +81,41 @@
                         </Button>
                      </children>
                   </HBox>
+                  <VBox fx:id="configurationBox" disable="true" opacity="0.0">
+                     <children>
+                        <TextField fx:id="serverAddress" stylesheets="@../book/style.css" text="serveraddress.com">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Text fill="#5f5f5f" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="spek-font-family1" text="Serveradress">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <DropdownButton fx:id="port" />
+                        <Text fill="#5f5f5f" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="spek-font-family1" text="Port">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <HBox alignment="CENTER">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#saveConfiguration" prefWidth="250.0" styleClass="spek-button" text="Spara" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
                <HBox.margin>
                   <Insets top="100.0" />

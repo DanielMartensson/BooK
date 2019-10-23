@@ -149,10 +149,17 @@ public class ConferenceroomPresenter {
 	 * This method will delete the selected meeting if it's created by you
 	 */
 	private void deleteMeeting() {
+		
+		// Make sure we have select a row
 		ConferenceBookingsTable selectedRow = conferenseroomTable.getSelectionModel().getSelectedItem();
-		if(selectedRow == null) {
+		if(selectedRow == null)
 			return;
-		}
+		
+		// Ask if you want to book a meeting
+		boolean removeMeeting = dialogs.question("Remove", "Do you want to remove this meeting?");
+		if(removeMeeting == false)
+			return;
+		
 		// Get the time in unix time stamp
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String from = selectedRow.getFrom();
