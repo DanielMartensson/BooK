@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
-import com.gluonhq.charm.glisten.control.DropdownButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.google.gson.Gson;
@@ -27,32 +26,60 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import se.danielmartensson.book.Main;
 import se.danielmartensson.tools.http.HTTPClient;
 import se.danielmartensson.tools.http.HTTPMessage;
 import se.danielmartensson.tools.popup.Dialogs;
+import se.danielmartensson.tools.popup.ScrollableButton;
 import se.danielmartensson.views.containers.ConferenceBookingsTable;
 import se.danielmartensson.views.entity.ConferenceRoom;
 import se.danielmartensson.views.globals.SelectedCompanyUsers;
 
 public class ConferenceroomPresenter {
+	
+	private static String[] times = {
+			"00:00", "00:15", "00:30", "00:45",
+			"01:00", "01:15", "01:30", "01:45",
+			"02:00", "02:15", "02:30", "02:45",
+			"03:00", "03:15", "03:30", "03:45",
+			"04:00", "04:15", "04:30", "04:45",
+			"05:00", "05:15", "05:30", "05:45",
+			"06:00", "06:15", "06:30", "06:45",
+			"07:00", "07:15", "07:30", "07:45",
+			"08:00", "08:15", "08:30", "08:45",
+			"09:00", "09:15", "09:30", "09:45",
+			"10:00", "10:15", "10:30", "10:45",
+			"11:00", "11:15", "11:30", "11:45",
+			"12:00", "12:15", "12:30", "12:45",
+			"13:00", "13:15", "13:30", "13:45",
+			"14:00", "14:15", "14:30", "14:45",
+			"15:00", "15:15", "15:30", "15:45",
+			"16:00", "16:15", "16:30", "16:45",
+			"17:00", "17:15", "17:30", "17:45",
+			"18:00", "18:15", "18:30", "18:45",
+			"19:00", "19:15", "19:30", "19:45",
+			"20:00", "20:15", "20:30", "20:45",
+			"21:00", "21:15", "21:30", "21:45",
+			"22:00", "22:15", "22:30", "22:45",
+			"23:00", "23:15", "23:30", "23:45",
+			
+			
+			                          };
 
 	@FXML
 	private View view;
 
 	@FXML
-	private DatePicker dateFrom;
+	private DatePicker dateSelect;
 
 	@FXML
-	private DropdownButton timeFrom;
+	private Button timeFrom;
 
 	@FXML
-	private DatePicker dateTo;
-
-	@FXML
-	private DropdownButton timeTo;
+	private Button timeTo;
 
 	@FXML
 	private TableView<ConferenceBookingsTable> conferenseroomTable;
@@ -74,6 +101,9 @@ public class ConferenceroomPresenter {
 
 	@Inject
 	private Dialogs dialogs;
+	
+	@Inject
+	private ScrollableButton scrollableButton;
 
 	private ObservableList<ConferenceBookingsTable> conferenseroomTableListener;
 
@@ -109,7 +139,10 @@ public class ConferenceroomPresenter {
 		emailColumn.setCellValueFactory(new PropertyValueFactory<ConferenceBookingsTable, String>("email"));
 		conferenseroomTableListener = FXCollections.observableArrayList();
 		conferenseroomTable.setItems(conferenseroomTableListener);
-
+		
+		// We cannot use Dropdown Buttons in mobile because they isin't scrollable. So we turn button to a scrollable vbox
+		scrollableButton.turnToScrollablee(timeFrom, timeTo, times);
+		
 	}
 
 	/**
@@ -191,21 +224,29 @@ public class ConferenceroomPresenter {
 	@FXML
 	void save(ActionEvent event) {
 		// Get the selected dates
-		LocalDate fromDate = dateFrom.getValue();
+		LocalDate fromDate = dateSelect.getValue();
 		if (fromDate == null)
 			return;
-		LocalDate toDate = dateTo.getValue();
-		if (toDate == null)
+		
+		// Ask if you want to book a meeting
+		boolean bookAmeeting = dialogs.question("Booking", "Do you want to book a meeting?");
+		if(bookAmeeting == false)
 			return;
 
 		// Get the selected time
-		String fromTime = timeFrom.getSelectedItem().getText();
-		String toTime = timeTo.getSelectedItem().getText();
-
+		String fromTime = timeFrom.getText();
+		String toTime = timeTo.getText();
+		
+		// Check if we have select start = stop as the same time
+		if(fromTime.equals(toTime) == true) {
+			dialogs.alertDialog(AlertType.WARNING, "Same time", "You cannot have the same time on start and stop");
+			return;
+		}
+		
 		// Create date strings at the form yyyy-MM-dd HH:mm
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String startDateString = fromDate.getYear() + "-" + fromDate.getMonthValue() + "-" + fromDate.getDayOfMonth() + " " + fromTime;
-		String toDateString = toDate.getYear() + "-" + toDate.getMonthValue() + "-" + toDate.getDayOfMonth() + " " + toTime;
+		String toDateString = fromDate.getYear() + "-" + fromDate.getMonthValue() + "-" + fromDate.getDayOfMonth() + " " + toTime;
 
 		try {
 			// Try to find the unix time stamp
@@ -225,8 +266,7 @@ public class ConferenceroomPresenter {
 				if (hTTPMessage.getMessageStatusCode() == HttpStatus.SC_OK) {
 					// Added to database. Now add to our list to
 					conferenseroomTableListener.add(new ConferenceBookingsTable(startDateString, toDateString, HTTPClient.USERNAME));
-
-					// TODO: Send out a Gmail messagee to our selected members
+					loadDatePicker();
 
 				} else {
 					dialogs.alertDialog(AlertType.WARNING, "Meeting", hTTPMessage.getMessage());

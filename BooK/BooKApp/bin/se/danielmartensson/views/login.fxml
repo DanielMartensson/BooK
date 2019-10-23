@@ -50,12 +50,12 @@
          <children>
             <VBox>
                <children>
-                  <TextField fx:id="email" maxWidth="300.0" minWidth="300.0">
+                  <TextField fx:id="email">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                      <styleClass>
                         <String fx:value="spek-text-field" />
@@ -65,22 +65,22 @@
                   </TextField>
                   <Text fill="#5f5f5f" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="spek-font-family1" text="E-post">
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="5.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Text>
-                  <PasswordField fx:id="password" maxWidth="300.0" minWidth="300.0" stylesheets="@../book/style.css">
+                  <PasswordField fx:id="password" stylesheets="@../book/style.css">
                      <styleClass>
                         <String fx:value="spek-text-field" />
                         <String fx:value="box" />
                         <String fx:value="mark" />
                      </styleClass>
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </PasswordField>
                   <Text fill="#5f5f5f" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="spek-font-family1" text="Lösenord">
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="5.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Text>
                   <HBox alignment="CENTER_RIGHT" prefWidth="295.0">
@@ -92,24 +92,24 @@
                         </Hyperlink>
                      </children>
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER">
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="20.0" />
+                        <Insets top="25.0" />
                      </VBox.margin>
                      <children>
-                        <Button maxWidth="250.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#login" prefWidth="250.0" styleClass="spek-button" text="Logga in" textAlignment="CENTER">
+                        <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#login" prefWidth="250.0" styleClass="spek-button" text="Logga in" textAlignment="CENTER">
                            <HBox.margin>
-                              <Insets left="25.0" right="25.0" />
+                              <Insets top="25.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
                </children>
                <HBox.margin>
-                  <Insets left="20.0" right="20.0" top="150.0" />
+                  <Insets top="100.0" />
                </HBox.margin>
             </VBox>
          </children>

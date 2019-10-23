@@ -1,5 +1,10 @@
 package se.danielmartensson.views;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 import javax.inject.Inject;
 
 
@@ -7,6 +12,8 @@ import com.gluonhq.charm.glisten.animation.BounceInRightTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
 import cz.msebera.android.httpclient.HttpStatus;
 import javafx.event.ActionEvent;
@@ -19,8 +26,13 @@ import se.danielmartensson.book.Main;
 import se.danielmartensson.tools.http.HTTPClient;
 import se.danielmartensson.tools.http.HTTPMessage;
 import se.danielmartensson.tools.popup.Dialogs;
+import se.danielmartensson.tools.popup.FileHandler;
+import se.danielmartensson.views.savings.LastLogin;
 
 public class LoginPresenter {
+
+	private static final String LOGIN_PARAMETERS = "/BooKStorage/loginparameters.json";
+	private static final String TEST_FILE_PATH  = "/BooKStorage/test.json";
 
 	@FXML
     private View view;
@@ -39,6 +51,9 @@ public class LoginPresenter {
     
     @Inject
 	private Dialogs dialogs;
+    
+    @Inject
+    private FileHandler fileHandler;
 
     /**
      * When we press the URL link "New user"
@@ -67,12 +82,59 @@ public class LoginPresenter {
     	}
     	
     }
+    
+    /**
+	 * This function will set the parameters of last login
+	 */
+	private void loadLoginParameters() {
+		if(fileHandler.exist(LOGIN_PARAMETERS) == true) {
+			try {
+				File file = fileHandler.loadNewFile(LOGIN_PARAMETERS);
+				LastLogin lastLogin = new Gson().fromJson(new JsonReader(new FileReader(file)), LastLogin.class);
+				email.setText(lastLogin.getEmail());
+				
+			} catch (Exception e) {
+				dialogs.exception("Cannot load: " + LOGIN_PARAMETERS, e);
+			}
+			
+		}else {
+			// No file exist, create
+			fileHandler.createNewFile(LOGIN_PARAMETERS, true);
+		}
+	}
+	
+	/**
+	 * This will save the login parameters
+	 */
+	private void saveLoginParameters() {
+		if(fileHandler.exist(LOGIN_PARAMETERS) == true) {
+			try {
+				File file = fileHandler.loadNewFile(LOGIN_PARAMETERS);
+				LastLogin lastLogin = new LastLogin();
+				lastLogin.setEmail(email.getText());
+				String json = new Gson().toJson(lastLogin);
+				BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+				bufferedWriter.write(json);
+				bufferedWriter.close();
+			} catch (Exception e) {
+				dialogs.exception("Cannot load: " + LOGIN_PARAMETERS, e);
+			}
+			
+		}else {
+			// No file exist, create
+			fileHandler.createNewFile(LOGIN_PARAMETERS, true);
+		}
+	}
+    
 
     /**
      * Initial start up
      */
     @FXML
     public void initialize() {
+    	// Check test - Need to be done
+    	fileHandler.runCreateDeleteTest(TEST_FILE_PATH);
+    			
     	// Slide in smooth
     	view.setShowTransitionFactory(BounceInRightTransition::new);
         
@@ -82,8 +144,12 @@ public class LoginPresenter {
                 // When we slide in
             	AppBar appBar = MobileApplication.getInstance().getAppBar();
             	appBar.setOpacity(0); // Hide AppBar
+            	
+            	// Get the last successful login parameters - email
+            	loadLoginParameters();
             }else {
             	// When we leave this page
+            	saveLoginParameters();
             }
         });
     }

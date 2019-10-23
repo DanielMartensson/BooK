@@ -82,6 +82,7 @@ public class NewUserPresenter {
 			if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				if(hTTPMessage.getMessageStatusCode() == HttpStatus.SC_OK) {
 					dialogs.alertDialog(AlertType.INFORMATION, "Success", hTTPMessage.getMessage());
+					MobileApplication.getInstance().switchView(Main.LOGIN_VIEW);
 				}else {
 					dialogs.alertDialog(AlertType.ERROR, "Fail", hTTPMessage.getMessage());
 				}
