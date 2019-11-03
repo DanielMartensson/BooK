@@ -11,11 +11,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import se.danielmartensson.views.ConferenceroomView;
-import se.danielmartensson.views.LoginView;
-import se.danielmartensson.views.MembersTableView;
-import se.danielmartensson.views.NewUserView;
-import se.danielmartensson.views.UserTableView;
+import se.danielmartensson.book.views.ConferenceroomView;
+import se.danielmartensson.book.views.LoginView;
+import se.danielmartensson.book.views.MembersTableView;
+import se.danielmartensson.book.views.NewUserView;
+import se.danielmartensson.book.views.UserTableView;
 
 public class Main extends MobileApplication {
 	
@@ -24,10 +24,6 @@ public class Main extends MobileApplication {
     public static final String USERTABLE_VIEW = "User table View";
     public static final String NEWUSER_VIEW = "New user View";
     public static final String MEMBERSTABLE_VIEW = "Members table View";
-    
-    /**
-     * THIRST THING YOU NEED TO DO IS TO SET 'ADDRESS' AND 'PORT' IN HTTPClient.java
-     */
     
     @Override
     public void init() {

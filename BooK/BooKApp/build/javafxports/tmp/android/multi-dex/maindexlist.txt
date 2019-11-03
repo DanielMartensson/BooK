@@ -100,7 +100,6 @@ lombok/experimental/FieldNameConstants.class
 javafx/event/EventHandler.class
 javafx/beans/property/BooleanPropertyBase$Listener.class
 android/support/v4/app/NotificationCompat$BuilderExtender.class
-se/danielmartensson/views/LoginView.class
 android/support/v4/media/MediaBrowserCompat$SearchCallback.class
 com/gluonhq/charm/glisten/control/Snackbar.class
 javax/inject/Scope.class
@@ -108,6 +107,7 @@ javafx/event/EventType.class
 android/support/v4/widget/CircularProgressDrawable.class
 java/lang/FunctionalInterface.class
 android/support/v4/media/session/PlaybackStateCompat$Builder.class
+se/danielmartensson/book/views/MembersTableView.class
 android/support/v4/media/RatingCompat$StarStyle.class
 javax/inject/Qualifier.class
 javafx/util/Duration.class
@@ -127,7 +127,6 @@ android/support/annotation/ArrayRes.class
 android/support/v4/app/NotificationCompat$NotificationVisibility.class
 javafx/beans/binding/BooleanExpression$1.class
 android/support/v4/app/NotificationCompatBase$Action.class
-se/danielmartensson/views/MembersTableView.class
 android/support/v4/content/res/FontResourcesParserCompat$FetchStrategy.class
 android/support/v4/view/animation/FastOutSlowInInterpolator.class
 android/support/v4/text/util/LinkifyCompat.class
@@ -167,12 +166,12 @@ android/support/v4/net/ConnectivityManagerCompat$ConnectivityManagerCompatApi24I
 android/support/annotation/AnyThread.class
 android/arch/lifecycle/LifecycleObserver.class
 javafx/geometry/Rectangle2D.class
-se/danielmartensson/views/ConferenceroomView.class
 lombok/experimental/NonFinal.class
 javafxports/android/IntentHandler.class
 android/support/v4/view/AccessibilityDelegateCompat.class
 android/support/annotation/StringRes.class
 javafx/beans/value/ObservableValue.class
+se/danielmartensson/book/views/LoginView.class
 android/support/v4/app/NotificationCompatBase$UnreadConversation$Factory.class
 android/support/v4/app/FrameMetricsAggregator$1.class
 android/support/v4/media/VolumeProviderCompat$ControlType.class
@@ -252,7 +251,6 @@ javafx/scene/input/KeyCode.class
 android/support/v4/view/ViewPager$DecorView.class
 lombok/experimental/Wither.class
 android/support/v4/media/MediaBrowserCompat$ConnectionCallback$ConnectionCallbackInternal.class
-se/danielmartensson/views/UserTableView.class
 android/support/annotation/CallSuper.class
 javafx/stage/Stage.class
 android/support/v4/media/MediaBrowserCompat$MediaBrowserServiceCallbackImpl.class
@@ -285,6 +283,7 @@ android/support/v4/app/NotificationCompatApi26.class
 android/support/v4/app/NotificationCompat.class
 android/support/v4/media/session/MediaSessionCompat.class
 javafx/stage/Screen.class
+se/danielmartensson/book/views/NewUserView.class
 lombok/experimental/FieldNameConstants$Exclude.class
 android/support/v4/media/session/PlaybackStateCompatApi21.class
 javafx/beans/binding/ObjectExpression$1.class
@@ -439,6 +438,7 @@ lombok/experimental/Wither$AnyAnnotation.class
 se/danielmartensson/book/Main$$Lambda$7.class
 android/support/v4/app/NotificationCompat$NotificationCompatApi19Impl.class
 android/support/annotation/RequiresApi.class
+se/danielmartensson/book/views/UserTableView.class
 android/support/v4/media/session/PlaybackStateCompat$RepeatMode.class
 com/sun/javafx/binding/ExpressionHelper$Generic.class
 android/support/v4/media/MediaBrowserCompatApi21$MediaItem.class
@@ -527,7 +527,6 @@ android/support/v4/media/MediaBrowserCompat$MediaBrowserImplApi24.class
 android/support/v4/widget/TextViewCompat$TextViewCompatBaseImpl.class
 android/support/v4/media/MediaBrowserCompat$MediaBrowserImplApi23.class
 android/support/v4/media/session/MediaSessionCompat$OnActiveChangeListener.class
-se/danielmartensson/views/NewUserView.class
 javafx/beans/property/ReadOnlyObjectProperty.class
 sun/util/logging/PlatformLogger.class
 com/gluonhq/charm/glisten/application/GlassPane.class
@@ -542,6 +541,7 @@ android/support/v4/util/PatternsCompat.class
 android/support/v4/view/ViewPager.class
 android/support/v4/app/RemoteInputCompatBase.class
 android/support/v4/media/MediaBrowserCompat$SearchResultReceiver.class
+se/danielmartensson/book/views/ConferenceroomView.class
 se/danielmartensson/book/Main$$Lambda$2.class
 android/support/v4/media/VolumeProviderCompat$Callback.class
 android/support/v4/media/MediaBrowserCompat$SubscriptionCallback.class

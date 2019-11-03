@@ -15,7 +15,7 @@ import com.gluonhq.charm.glisten.control.NavigationDrawer.ViewItem;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 
 import javafx.scene.image.Image;
-import se.danielmartensson.tools.popup.Dialogs;
+import se.danielmartensson.book.tools.popup.Dialogs;
 
 public class DrawerManager {
 	
