@@ -77,10 +77,18 @@ public class NewUserPresenter {
 	@FXML
 	void createUser(ActionEvent event) {
 		try {
+			// Set the timeout
+			int timeout = 10; // seconds
+			RequestConfig config = RequestConfig.custom()
+			  .setConnectTimeout(timeout * 1000)
+			  .setConnectionRequestTimeout(timeout * 1000)
+			  .setSocketTimeout(timeout * 1000).build();
+			
 			// This will send a HTTP request to the server, without auth
-			CloseableHttpClient httpclient = HttpClients.createDefault();
-			HttpPost httppost = new HttpPost(
-					"http://" + HTTPClient.ADDRESS + ":" + HTTPClient.PORT + "/unauth/createnewuser");
+			BasicCredentialsProvider credsProvider = new BasicCredentialsProvider();
+			CloseableHttpClient httpclient = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).setDefaultRequestConfig(config).build();
+			//CloseableHttpClient httpclient = HttpClients.createDefault();
+			HttpPost httppost = new HttpPost("http://" + HTTPClient.ADDRESS + ":" + HTTPClient.PORT + "/unauth/createnewuser");
 
 			// Create a role
 			Role role = new Role();
