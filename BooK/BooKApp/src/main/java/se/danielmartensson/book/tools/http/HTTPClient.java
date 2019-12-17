@@ -41,7 +41,7 @@ public class HTTPClient {
 	 */
 	public HTTPMessage login(String username, String password) {		
 		// Set the timeout
-		int timeout = 10; // seconds
+		int timeout = 30; // seconds
 		RequestConfig config = RequestConfig.custom()
 		  .setConnectTimeout(timeout * 1000)
 		  .setConnectionRequestTimeout(timeout * 1000)
